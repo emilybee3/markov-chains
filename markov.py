@@ -66,41 +66,22 @@ def make_text(chains):
 
     # your code goes here
 
-#a random tuple pops up, 
-    rand_tup = choice(chains.keys())
+    next_tup = choice(chains.keys())
 
-    #then a random third word is chosen from its value list
-    rand_val = choice(chains.values()) 
+    rand_val = choice(chains[next_tup]) 
 
 
-    #unpack tuple
-    tup_1 = rand_tup[0]
-    text.append(tup_1)
+ 
+    while next_tup in chains: 
 
-    tup_2 = rand_tup[1]
-    text.append(tup_2)
-
-    val = rand_val[0]
-    text.append(val)
-
-    # for loop should com before random value chosen
-    # for item in  
-    next_tup = (tup_2, val)
-    new_list = chains[next_tup]
-    if new_list in chains:
-            new_choice = choice(new_list)
-            new_choice.append(text)
-    else:
-            None
-    
-
-    print text
+        new_choice = choice(chains[next_tup])
+        text.append(new_choice)
+        
+        next_tup = (next_tup[1], new_choice)
+        text.append(next_tup)
 
 
-    #the third word and the last word of the tuple become a new tuple
-    #add if/else statements
-
-#end condition 
+    print join(text)
 
 
 #     return text
